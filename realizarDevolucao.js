@@ -1,16 +1,18 @@
 import { dadosLivros } from "./dadosLivros.js";
-export function realizarEmprestimo(titulo) {
+
+export function realizarDevolucao(titulo) {
   const livro = dadosLivros.find(
     (l) => l.titulo.toLowerCase() === titulo.toLowerCase(),
   );
+
   if (livro) {
-    if (livro.disponivel) {
-      livro.disponivel = false;
-      console.log("\nLivro emprestado com sucesso!");
+    if (!livro.disponivel) {
+      livro.disponivel = true;
+      console.log("\nLivro devolvido com sucesso!");
     } else {
-      console.log("\nLivro já está emprestado!");
+      console.log("\nEste livro já constava como disponível!");
     }
   } else {
     console.log("\nLivro não encontrado!");
   }
-}//.
+}
